@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça o Instituto Katia Carvalho, sua missão e áreas de atuação.">
+  <title>O Instituto | Instituto Katia Carvalho</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navegação compartilhada entre as páginas -->
+  <header><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="Instituto Katia Carvalho, início"><span class="brand-mark">IKC</span><span>Instituto Katia Carvalho<small>Impacto social</small></span></a><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button><nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="instituto.html">O Instituto</a><a href="projetos.html">Projetos</a><a href="transparencia.html">Transparência</a><a href="voluntariado.html">Voluntariado</a><a href="contato.html">Contato</a></nav><a class="button button-primary" href="contato.html">Quero apoiar</a></div></header>
+  <main>
+    <!-- Apresentação da página -->
+    <section class="page-hero"><div class="container"><p class="breadcrumb">Início / O Instituto</p><h1>Uma rede dedicada a transformar realidades.</h1><p>Conheça a história, os princípios e as frentes que orientam o Instituto Katia Carvalho.</p></div></section>
+    <!-- Missão, visão e valores -->
+    <section><div class="container content-grid"><div class="content-copy"><p class="eyebrow">Quem somos</p><h2>Presença que gera possibilidades.</h2><p>O Instituto Katia Carvalho é uma associação sem fins lucrativos, dedicada à promoção da cidadania, inclusão social e desenvolvimento comunitário. Atuamos sem discriminação de raça, gênero ou religião, sempre com foco no impacto social.</p><p>Trabalhamos lado a lado com comunidades, parceiros e voluntários para construir soluções que respeitam os territórios e fortalecem a autonomia das pessoas.</p></div><aside class="info-panel"><h2>Nossos princípios</h2><ul class="check-list"><li>Respeito e acolhimento</li><li>Ética e transparência</li><li>Inclusão e equidade</li><li>Participação comunitária</li><li>Responsabilidade social</li></ul></aside></div></section>
+    <section class="about"><div class="container"><div class="page-section-title"><p class="eyebrow">Direcionadores</p><h2>Missão, visão e compromisso</h2></div><div class="numbers-grid"><article class="number-card"><strong>Missão</strong><span>Promover cidadania, inclusão e desenvolvimento comunitário com ações que geram autonomia.</span></article><article class="number-card"><strong>Visão</strong><span>Ser uma referência em impacto social, colaboração e cuidado com as pessoas.</span></article><article class="number-card"><strong>Valor</strong><span>Agir com transparência, escuta e compromisso com resultados que importam.</span></article></div></div></section>
+  </main>
+  <!-- Rodapé compartilhado -->
+  <footer><div class="container footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark">IKC</span><span>Instituto Katia Carvalho<small>Impacto social</small></span></a><p>Solidariedade, inclusão e desenvolvimento comunitário.</p></div><div><h3>Links rápidos</h3><ul><li><a href="instituto.html">O Instituto</a></li><li><a href="projetos.html">Projetos</a></li><li><a href="transparencia.html">Transparência</a></li><li><a href="contato.html">Contato</a></li></ul></div><div><h3>Redes sociais</h3><div class="socials"><a href="contato.html" aria-label="Instagram">ig</a><a href="contato.html" aria-label="Facebook">fb</a><a href="contato.html" aria-label="LinkedIn">in</a></div></div></div><div class="container copyright"><span>© Instituto Katia Carvalho – Todos os direitos reservados</span><a href="contato.html">Política de privacidade</a></div></footer>
+  <script>const menuButton=document.querySelector('.menu-toggle');const navigation=document.querySelector('nav');menuButton.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',isOpen);menuButton.setAttribute('aria-label',isOpen?'Fechar menu':'Abrir menu');});navigation.querySelectorAll('a').forEach((link)=>link.addEventListener('click',()=>navigation.classList.remove('open')));</script>
+</body>
+</html>
