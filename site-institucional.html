@@ -1,331 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Instituto Katia Carvalho: solidariedade, inclusão e desenvolvimento social.">
-  <title>Instituto Katia Carvalho | Impacto que transforma</title>
+  <title>Instituto Katia Carvalho</title>
   <style>
-    /* ==================== Identidade visual e base ==================== */
-    :root {
-      --green-dark: #176238;
-      --green: #65a343;
-      --green-soft: #e7f0df;
-      --cream: #f4f1e5;
-      --ink: #26382a;
-      --muted: #687568;
-      --gold: #c6942d;
-      --white: #fff;
-      --line: #d9e1d3;
-      --shadow: 0 18px 40px rgba(23, 77, 49, .12);
-      --radius: 16px;
-      --max-width: 1180px;
-    }
+    /* Identidade visual, reset e componentes base */
+    :root { --navy:#12304a; --blue:#1877a8; --blue-soft:#e9f5fa; --green:#31794d; --green-soft:#e8f3e9; --ink:#1d3444; --muted:#607485; --white:#fff; --line:#d9e5e9; --shadow:0 18px 40px rgba(18,48,74,.1); --radius:16px; --max:1180px; }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; color:var(--ink); background:var(--white); font:16px/1.6 Arial,sans-serif; }
+    img { display:block; max-width:100%; } a { color:inherit; text-decoration:none; } a:focus-visible,button:focus-visible { outline:3px solid #f1bd4b; outline-offset:3px; }
+    .container { width:min(var(--max),calc(100% - 40px)); margin:auto; } h1,h2,h3,p { margin-top:0; } h1,h2,h3 { line-height:1.15; } h2 { color:var(--navy); font-size:clamp(2rem,4vw,3.1rem); margin-bottom:18px; }
+    .eyebrow { margin:0 0 10px; color:var(--green); font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 22px; border:2px solid transparent; border-radius:8px; font-weight:700; transition:.2s; } .button:hover { transform:translateY(-2px); }
+    .button-primary { color:var(--white); background:var(--green); } .button-primary:hover { background:#25643f; } .button-light { color:var(--navy); background:var(--white); } .button-outline { color:var(--white); border-color:#fff; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--white);
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-    .container { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
+    /* Header fixo, logo e navegação */
+    header { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+    .nav-wrap { display:flex; align-items:center; justify-content:space-between; min-height:76px; gap:24px; } .brand-logo { width:176px; height:62px; object-fit:cover; border-radius:6px; }
+    nav { display:flex; align-items:center; gap:20px; } nav a { color:#365061; font-size:.86rem; font-weight:700; } nav a:hover { color:var(--blue); }
+    .menu-toggle { display:none; padding:8px; color:var(--navy); background:transparent; border:0; font-size:1.5rem; cursor:pointer; }
 
-    /* ==================== Componentes reutilizáveis ==================== */
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--green-dark);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2, h3 { line-height: 1.15; }
-    h2 { color: var(--green-dark); font-size: clamp(2rem, 4vw, 3.1rem); margin-bottom: 18px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      font-size: .95rem;
-      font-weight: 700;
-      transition: transform .2s ease, background-color .2s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { color: var(--white); background: var(--green-dark); }
-    .button-primary:hover { background: #104b2a; }
-    .button-light { color: var(--green-dark); background: var(--white); }
-    .button-outline { color: var(--white); border-color: rgba(255,255,255,.7); }
-    .button-outline:hover { background: rgba(255,255,255,.12); }
+    /* Hero com imagem placeholder e chamadas principais */
+    .hero { min-height:610px; display:flex; align-items:center; color:var(--white); background:linear-gradient(90deg,rgba(10,38,54,.9),rgba(10,38,54,.62) 48%,rgba(10,38,54,.2)),url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=85') center/cover; }
+    .hero-content { max-width:710px; padding:86px 0 100px; } .hero .eyebrow { color:#b9e0bf; } h1 { max-width:700px; margin-bottom:24px; font-size:clamp(2.8rem,6vw,5.25rem); } .hero p { max-width:590px; color:#e4f0f3; font-size:1.15rem; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
 
-    /* ==================== Header fixo e navegação ==================== */
-    header {
-      position: sticky;
-      z-index: 10;
-      top: 0;
-      background: rgba(244, 241, 229, .96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-    .nav-wrap { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 24px; }
-    .brand-logo { width: 176px; height: 62px; object-fit: cover; object-position: center; border-radius: 6px; }
-    nav { display: flex; align-items: center; gap: 20px; }
-    nav a { color: #365c42; font-size: .86rem; font-weight: 700; }
-    nav a:hover { color: var(--gold); }
-    .menu-toggle { display: none; padding: 8px; color: var(--green-dark); background: transparent; border: 0; font-size: 1.5rem; cursor: pointer; }
+    /* Seções institucionais, áreas e projetos */
+    section { padding:96px 0; } .about,.volunteer { background:var(--blue-soft); } .about-grid,.tech-grid,.contact-grid { display:grid; grid-template-columns:.85fr 1.15fr; align-items:center; gap:80px; }
+    .about-stat { padding:30px; color:var(--white); background:var(--navy); border-radius:var(--radius); box-shadow:var(--shadow); } .about-stat strong { display:block; color:#b9e0bf; font-size:3.8rem; line-height:1; } .about-copy p,.section-heading p { color:var(--muted); font-size:1.06rem; }
+    .section-heading { max-width:650px; margin-bottom:42px; } .areas-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; } .area-card { min-height:144px; padding:22px 18px; border:1px solid var(--line); border-radius:var(--radius); background:var(--white); transition:.2s; } .area-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); } .area-icon { display:block; margin-bottom:13px; font-size:1.8rem; }
+    .projects { background:var(--green-soft); } .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; } .project-card { overflow:hidden; background:var(--white); border-radius:var(--radius); box-shadow:0 8px 20px rgba(49,121,77,.08); } .project-card img { width:100%; height:205px; object-fit:cover; } .project-content { padding:24px; } .project-content h3 { color:var(--navy); } .project-content p { color:var(--muted); font-size:.95rem; } .project-content a { color:var(--green); font-weight:700; }
 
-    /* ==================== Hero institucional ==================== */
-    .hero {
-      min-height: 610px;
-      display: flex;
-      align-items: center;
-      color: var(--white);
-      background: linear-gradient(90deg, rgba(13,55,32,.92), rgba(13,55,32,.62) 48%, rgba(13,55,32,.2)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=85') center/cover;
-    }
-    .hero-content { max-width: 710px; padding: 86px 0 100px; }
-    .hero .eyebrow { color: #cbe3b9; }
-    h1 { max-width: 700px; margin-bottom: 24px; font-size: clamp(2.8rem, 6vw, 5.25rem); }
-    .hero p { max-width: 590px; margin-bottom: 32px; color: #edf4e8; font-size: clamp(1.05rem, 2vw, 1.25rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    /* Transparência e tecnologia */
+    .transparency-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; } .document-list,.tech-list { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0; padding:0; list-style:none; } .document-list a { padding:16px; color:var(--navy); border:1px solid var(--line); border-radius:10px; font-weight:700; } .document-list a::before { content:'↗'; margin-right:10px; color:var(--green); }
+    .tech { color:var(--white); background:var(--navy); } .tech h2,.tech .eyebrow { color:var(--white); } .tech .eyebrow { color:#b9e0bf; } .tech p { color:#dceaf0; font-size:1.1rem; } .tech-list li { padding:17px 18px; color:#e8f4f5; border-left:3px solid var(--green); background:rgba(255,255,255,.08); }
 
-    /* ==================== Seções institucionais ==================== */
-    section { padding: 96px 0; }
-    .about, .volunteer { background: var(--cream); }
-    .about-grid, .tech-grid, .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 80px; }
-    .about-stat { padding: 30px; color: var(--white); background: var(--green-dark); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .about-stat strong { display: block; color: #cbe3b9; font-size: 3.8rem; line-height: 1; }
-    .about-stat p, .tech p, .contact-note p { margin: 12px 0 0; color: #e3f0e3; }
-    .about-copy p { color: var(--muted); font-size: 1.12rem; }
-    .section-heading { max-width: 650px; margin-bottom: 42px; }
-    .section-heading p { color: var(--muted); font-size: 1.06rem; }
+    /* Contato e rodapé */
+    .contact-grid { align-items:start; } .contact-details { display:grid; gap:18px; } .contact-item { display:flex; gap:14px; } .contact-item b { display:block; color:var(--navy); } .contact-item span { color:var(--muted); } .contact-icon { flex:0 0 40px; display:grid; width:40px; height:40px; place-items:center; color:var(--green); background:var(--green-soft); border-radius:50%; } .contact-note { padding:30px; color:var(--white); background:var(--blue); border-radius:var(--radius); } .contact-note p { color:#e3f0f4; }
+    footer { padding:42px 0 26px; color:#dceaf0; background:#0b2638; } .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:50px; padding-bottom:34px; } footer h3 { color:var(--white); font-size:1rem; } footer ul { display:grid; gap:8px; margin:0; padding:0; list-style:none; } footer a { color:#c0d5dc; font-size:.9rem; } .socials { display:flex; gap:12px; } .socials a { display:grid; width:36px; height:36px; place-items:center; border:1px solid #557382; border-radius:50%; } .copyright { display:flex; justify-content:space-between; gap:18px; padding-top:22px; border-top:1px solid #294555; color:#a9c0c8; font-size:.82rem; }
 
-    /* ==================== Áreas de atuação ==================== */
-    .areas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .area-card { min-height: 144px; padding: 22px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
-    .area-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .area-icon { display: block; margin-bottom: 13px; font-size: 1.8rem; }
-    .area-card h3 { margin-bottom: 0; font-size: .98rem; }
-
-    /* ==================== Projetos ==================== */
-    .projects { background: var(--green-soft); }
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .project-card { overflow: hidden; background: var(--white); border-radius: var(--radius); box-shadow: 0 8px 20px rgba(49,121,77,.08); }
-    .project-card img { width: 100%; height: 205px; object-fit: cover; }
-    .project-content { padding: 24px; }
-    .project-content h3 { color: var(--green-dark); font-size: 1.3rem; }
-    .project-content p { color: var(--muted); font-size: .95rem; }
-    .project-content a { color: var(--green-dark); font-weight: 700; }
-
-    /* ==================== Transparência ==================== */
-    .transparency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .document-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .document-list a { padding: 16px; color: var(--green-dark); border: 1px solid var(--line); border-radius: 10px; font-weight: 700; }
-    .document-list a::before { content: '↗'; margin-right: 10px; color: var(--gold); }
-    .document-list a:hover { border-color: var(--green); background: var(--green-soft); }
-
-    /* ==================== Tecnologia e inovação ==================== */
-    .tech { color: var(--white); background: var(--green-dark); }
-    .tech h2, .tech .eyebrow { color: var(--white); }
-    .tech .eyebrow { color: #cbe3b9; }
-    .tech p { font-size: 1.1rem; }
-    .tech-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; padding: 0; list-style: none; }
-    .tech-list li { padding: 17px 18px; color: #edf4e8; border-left: 3px solid var(--gold); background: rgba(255,255,255,.08); }
-
-    /* ==================== Contato e rodapé ==================== */
-    .contact-grid { align-items: start; }
-    .contact-details { display: grid; gap: 18px; }
-    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
-    .contact-item b { display: block; color: var(--green-dark); }
-    .contact-item span { color: var(--muted); }
-    .contact-icon { flex: 0 0 40px; display: grid; width: 40px; height: 40px; place-items: center; color: var(--green-dark); background: var(--green-soft); border-radius: 50%; }
-    .contact-note { padding: 30px; color: var(--white); background: var(--green-dark); border-radius: var(--radius); }
-    footer { padding: 42px 0 26px; color: #e3eadc; background: #103b26; }
-    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; padding-bottom: 34px; }
-    footer h3 { margin-bottom: 14px; color: var(--white); font-size: 1rem; }
-    footer ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
-    footer a { color: #cbe0cf; font-size: .9rem; }
-    footer a:hover { color: var(--white); }
-    .socials { display: flex; gap: 12px; }
-    .socials a { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid #7ca58a; border-radius: 50%; }
-    .copyright { display: flex; justify-content: space-between; gap: 18px; padding-top: 22px; border-top: 1px solid #426b4e; color: #b9ceb9; font-size: .82rem; }
-
-    /* ==================== Responsividade ==================== */
-    @media (max-width: 960px) {
-      nav { gap: 12px; }
-      nav a { font-size: .78rem; }
-      .areas-grid { grid-template-columns: repeat(3, 1fr); }
-      .about-grid, .tech-grid, .contact-grid { gap: 40px; }
-    }
-    @media (max-width: 760px) {
-      .container { width: min(var(--max-width), calc(100% - 28px)); }
-      .nav-wrap { min-height: 68px; }
-      .menu-toggle { display: block; }
-      nav { position: absolute; top: 68px; right: 14px; left: 14px; display: none; padding: 18px; flex-direction: column; align-items: stretch; background: var(--cream); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
-      nav.open { display: flex; }
-      nav a { padding: 8px; }
-      header .button { display: none; }
-      section { padding: 68px 0; }
-      .hero { min-height: 600px; }
-      .hero-content { padding: 70px 0; }
-      .about-grid, .tech-grid, .transparency-grid, .contact-grid { grid-template-columns: 1fr; gap: 34px; }
-      .areas-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .document-list, .tech-list { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .footer-grid > :first-child { grid-column: 1 / -1; }
-      .copyright { flex-direction: column; }
-    }
-    @media (max-width: 440px) {
-      h1 { font-size: 2.75rem; }
-      .areas-grid, .projects-grid { grid-template-columns: 1fr; }
-      .hero-actions .button { width: 100%; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-grid > :first-child { grid-column: auto; }
-    }
+    /* Layout responsivo para tablets e celulares */
+    @media (max-width:960px) { nav { gap:12px; } nav a { font-size:.78rem; } .areas-grid { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:760px) { .container { width:min(var(--max),calc(100% - 28px)); } .nav-wrap { min-height:68px; } .menu-toggle { display:block; } nav { position:absolute; top:68px; right:14px; left:14px; display:none; padding:18px; flex-direction:column; align-items:stretch; background:var(--white); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); } nav.open { display:flex; } nav a { padding:8px; } header .button { display:none; } section { padding:68px 0; } .about-grid,.tech-grid,.transparency-grid,.contact-grid { grid-template-columns:1fr; gap:34px; } .areas-grid,.projects-grid { grid-template-columns:repeat(2,1fr); } .document-list,.tech-list { grid-template-columns:1fr; } .footer-grid { grid-template-columns:1fr 1fr; gap:32px; } .footer-grid>:first-child { grid-column:1/-1; } .copyright { flex-direction:column; } }
+    @media (max-width:440px) { h1 { font-size:2.75rem; } .areas-grid,.projects-grid { grid-template-columns:1fr; } .hero-actions .button { width:100%; } .footer-grid { grid-template-columns:1fr; } .footer-grid>:first-child { grid-column:auto; } }
   </style>
 </head>
 <body>
-  <!-- Cabeçalho fixo com logo, navegação e chamada principal -->
-  <header>
-    <div class="container nav-wrap">
-      <a class="brand" href="#inicio" aria-label="Instituto Katia Carvalho, início">
-        <img class="brand-logo" src="logo instituto katia carvalho.jpeg" alt="Instituto Katia Carvalho - Fomento ao Agro e Sustentabilidade">
-      </a>
-      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
-      <nav aria-label="Navegação principal">
-        <a href="#inicio">Início</a>
-        <a href="#instituto">O Instituto</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#transparencia">Transparência</a>
-        <a href="#voluntariado">Voluntariado</a>
-        <a href="#contato">Contato</a>
-      </nav>
-      <a class="button button-primary" href="#contato">Quero apoiar</a>
-    </div>
-  </header>
-
+  <!-- Header principal com navegação semântica -->
+  <header><div class="container nav-wrap"><a href="#inicio" aria-label="Instituto Katia Carvalho, início"><img class="brand-logo" src="logo instituto katia carvalho.jpeg" alt="Logo do Instituto Katia Carvalho"></a><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button><nav aria-label="Navegação principal"><a href="#inicio">Início</a><a href="#instituto">O Instituto</a><a href="#projetos">Projetos</a><a href="#transparencia">Transparência</a><a href="#voluntariado">Voluntariado</a><a href="#contato">Contato</a></nav><a class="button button-primary" href="#contato">Quero Apoiar</a></div></header>
   <main>
-    <!-- Hero com imagem de fundo e mensagens principais -->
-    <section class="hero" id="inicio">
-      <div class="container hero-content">
-        <p class="eyebrow">Solidariedade que aproxima</p>
-        <h1>Transformando vidas através da solidariedade, inclusão e desenvolvimento social.</h1>
-        <p>Construímos oportunidades e fortalecemos comunidades para que cada pessoa possa participar de um futuro mais justo.</p>
-        <div class="hero-actions">
-          <a class="button button-light" href="#projetos">Conheça nosso trabalho</a>
-          <a class="button button-outline" href="#contato">Quero apoiar</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Apresentação institucional -->
-    <section class="about" id="instituto">
-      <div class="container about-grid">
-        <div class="about-stat"><strong>11</strong><p>áreas para promover cidadania, autonomia e bem-estar.</p></div>
-        <div class="about-copy">
-          <p class="eyebrow">Quem somos</p>
-          <h2>Presença que gera possibilidades.</h2>
-          <p>O Instituto Katia Carvalho é uma associação sem fins lucrativos, dedicada à promoção da cidadania, inclusão social e desenvolvimento comunitário. Atuamos sem discriminação de raça, gênero ou religião, sempre com foco no impacto social.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Áreas de atuação em cards -->
-    <section id="atuacao">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">Nossa missão</p><h2>Atuação que começa nas necessidades reais.</h2><p>Unimos pessoas, conhecimento e recursos para cuidar do presente e abrir caminhos para o futuro.</p></div>
-        <div class="areas-grid">
-          <article class="area-card"><span class="area-icon">🌱</span><h3>Agricultura familiar</h3></article>
-          <article class="area-card"><span class="area-icon">🤝</span><h3>Cidadania</h3></article>
-          <article class="area-card"><span class="area-icon">🍲</span><h3>Segurança alimentar</h3></article>
-          <article class="area-card"><span class="area-icon">👩‍👧</span><h3>Apoio às mães</h3></article>
-          <article class="area-card"><span class="area-icon">❤️</span><h3>Assistência social</h3></article>
-          <article class="area-card"><span class="area-icon">♿</span><h3>Inclusão e acessibilidade</h3></article>
-          <article class="area-card"><span class="area-icon">🏃</span><h3>Esporte e qualidade de vida</h3></article>
-          <article class="area-card"><span class="area-icon">🏥</span><h3>Saúde</h3></article>
-          <article class="area-card"><span class="area-icon">🙋</span><h3>Voluntariado</h3></article>
-          <article class="area-card"><span class="area-icon">🏠</span><h3>Moradia e bem-estar</h3></article>
-          <article class="area-card"><span class="area-icon">💻</span><h3>Tecnologia e inovação</h3></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projetos em destaque -->
-    <section class="projects" id="projetos">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">Projetos</p><h2>Ideias que viram ação no território.</h2><p>Conheça algumas das frentes que aproximam cuidado, oportunidade e transformação.</p></div>
-        <div class="projects-grid">
-          <article class="project-card"><img src="https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&w=900&q=80" alt="Mulheres reunidas em uma atividade comunitária"><div class="project-content"><h3>Rede de cuidado</h3><p>Apoio e formação para mães e famílias em situação de vulnerabilidade.</p><a href="#contato">Saiba mais →</a></div></article>
-          <article class="project-card"><img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80" alt="Crianças aprendendo juntas"><div class="project-content"><h3>Juntos pelo futuro</h3><p>Atividades que conectam educação, esporte e desenvolvimento integral.</p><a href="#contato">Saiba mais →</a></div></article>
-          <article class="project-card"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" alt="Mãos formando um círculo de união"><div class="project-content"><h3>Comunidade ativa</h3><p>Mobilização local para ampliar acesso a direitos e oportunidades.</p><a href="#contato">Saiba mais →</a></div></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Documentos e compromissos públicos -->
-    <section id="transparencia">
-      <div class="container transparency-grid">
-        <div class="section-heading"><p class="eyebrow">Transparência</p><h2>Confiança se constrói com clareza.</h2><p>Acompanhe documentos, resultados e informações sobre a nossa atuação.</p></div>
-        <div class="document-list">
-          <a href="#contato">Estatuto Social</a><a href="#contato">Ata de Assembleia</a><a href="#contato">Relatórios anuais</a><a href="#contato">Prestação de contas</a><a href="#contato">Demonstrações financeiras</a><a href="#contato">Parcerias e convênios</a>
-        </div>
-      </div>
-    </section>
-
+    <!-- Hero institucional -->
+    <section class="hero" id="inicio"><div class="container hero-content"><p class="eyebrow">Solidariedade que aproxima</p><h1>Transformando vidas através da solidariedade, inclusão e desenvolvimento social.</h1><p>Construímos oportunidades e fortalecemos comunidades para que cada pessoa possa participar de um futuro mais justo.</p><div class="hero-actions"><a class="button button-light" href="#projetos">Conheça nosso trabalho</a><a class="button button-outline" href="#contato">Quero apoiar</a></div></div></section>
+    <!-- Quem somos -->
+    <section class="about" id="instituto"><div class="container about-grid"><div class="about-stat"><strong>11</strong><p>áreas para promover cidadania, autonomia e bem-estar.</p></div><div class="about-copy"><p class="eyebrow">Quem Somos</p><h2>Presença que gera possibilidades.</h2><p>O Instituto Katia Carvalho é uma associação sem fins lucrativos, dedicada à promoção da cidadania, inclusão social e desenvolvimento comunitário. Atuamos sem discriminação de raça, gênero ou religião, sempre com foco no impacto social.</p></div></div></section>
+    <!-- Áreas de atuação -->
+    <section id="atuacao"><div class="container"><div class="section-heading"><p class="eyebrow">Nossa missão</p><h2>Áreas de atuação</h2><p>Unimos pessoas, conhecimento e recursos para cuidar do presente e abrir caminhos para o futuro.</p></div><div class="areas-grid"><article class="area-card"><span class="area-icon">🌱</span><h3>Agricultura familiar</h3></article><article class="area-card"><span class="area-icon">🤝</span><h3>Cidadania</h3></article><article class="area-card"><span class="area-icon">🍲</span><h3>Segurança alimentar</h3></article><article class="area-card"><span class="area-icon">👩‍👧</span><h3>Apoio às mães</h3></article><article class="area-card"><span class="area-icon">❤️</span><h3>Assistência social</h3></article><article class="area-card"><span class="area-icon">♿</span><h3>Inclusão e acessibilidade</h3></article><article class="area-card"><span class="area-icon">🏃</span><h3>Esporte e qualidade de vida</h3></article><article class="area-card"><span class="area-icon">🏥</span><h3>Saúde</h3></article><article class="area-card"><span class="area-icon">🙋</span><h3>Voluntariado</h3></article><article class="area-card"><span class="area-icon">🏠</span><h3>Moradia e bem-estar</h3></article><article class="area-card"><span class="area-icon">💻</span><h3>Tecnologia e inovação</h3></article></div></div></section>
+    <!-- Projetos com imagens e links placeholder -->
+    <section class="projects" id="projetos"><div class="container"><div class="section-heading"><p class="eyebrow">Projetos</p><h2>Ideias que viram ação no território.</h2></div><div class="projects-grid"><article class="project-card"><img src="https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&w=900&q=80" alt="Atividade comunitária"><div class="project-content"><h3>Rede de cuidado</h3><p>Apoio e formação para mães e famílias em situação de vulnerabilidade.</p><a href="#contato">Saiba mais</a></div></article><article class="project-card"><img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80" alt="Crianças aprendendo juntas"><div class="project-content"><h3>Juntos pelo futuro</h3><p>Educação, esporte e desenvolvimento integral para crianças e adolescentes.</p><a href="#contato">Saiba mais</a></div></article><article class="project-card"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" alt="Mãos formando um círculo"><div class="project-content"><h3>Comunidade ativa</h3><p>Mobilização local para ampliar direitos, oportunidades e proteção.</p><a href="#contato">Saiba mais</a></div></article></div></div></section>
+    <!-- Transparência com links que podem receber documentos reais -->
+    <section id="transparencia"><div class="container transparency-grid"><div class="section-heading"><p class="eyebrow">Transparência</p><h2>Confiança se constrói com clareza.</h2><p>Acompanhe documentos, resultados e informações sobre a atuação do Instituto.</p></div><div class="document-list"><a href="#contato">Estatuto Social</a><a href="#contato">Ata de Assembleia</a><a href="#contato">Relatórios anuais</a><a href="#contato">Prestação de contas</a><a href="#contato">Demonstrações financeiras</a><a href="#contato">Parcerias e convênios</a></div></div></section>
     <!-- Tecnologia e inovação -->
-    <section class="tech" id="tecnologia">
-      <div class="container tech-grid">
-        <div><p class="eyebrow">Tecnologia e inovação</p><h2>Tecnologia a serviço do impacto social</h2><p>Usamos ferramentas digitais para ampliar o alcance das iniciativas, apoiar decisões e tornar o cuidado mais eficiente e acessível.</p></div>
-        <ul class="tech-list"><li>Projeto OMEGA</li><li>Sistemas digitais</li><li>Automação e IA</li><li>Inteligência de dados e BI</li><li>Segurança da informação (LGPD)</li><li>Inclusão digital</li></ul>
-      </div>
-    </section>
-
-    <!-- Convite ao voluntariado e apoio -->
-    <section class="volunteer" id="voluntariado">
-      <div class="container section-heading"><p class="eyebrow">Seja voluntário</p><h2>Junte-se a nós e faça parte da transformação social.</h2><a class="button button-primary" href="#contato">Quero ser voluntário</a></div>
-    </section>
-
-    <!-- Informações de contato -->
-    <section id="contato">
-      <div class="container contact-grid">
-        <div><p class="eyebrow">Contato</p><h2>Vamos conversar?</h2><div class="contact-details"><div class="contact-item"><span class="contact-icon">⌖</span><div><b>Endereço</b><span>Rua Dom Jose de Alarcão, 55 - Ipiranga, São Paulo - CEP 04208-040</span></div></div><div class="contact-item"><span class="contact-icon">@</span><div><b>E-mail</b><span>contato@institutokatiacarvalho.org.br</span></div></div><div class="contact-item"><span class="contact-icon">☎</span><div><b>Telefone</b><span>(11) 0000-0000</span></div></div></div></div>
-        <div class="contact-note"><h3>Faça parte desta rede</h3><p>Parcerias, voluntariado e apoio financeiro fortalecem o impacto de cada projeto.</p><a class="button button-light" href="mailto:contato@institutokatiacarvalho.org.br">Entrar em contato</a></div>
-      </div>
-    </section>
+    <section class="tech" id="tecnologia"><div class="container tech-grid"><div><p class="eyebrow">Tecnologia e Inovação</p><h2>Tecnologia a serviço do impacto social</h2><p>Usamos ferramentas digitais para ampliar o alcance das iniciativas, apoiar decisões e tornar o cuidado mais eficiente e acessível.</p></div><ul class="tech-list"><li>Sistemas digitais</li><li>Automação e IA</li><li>Inteligência de dados e BI</li><li>Segurança da informação (LGPD)</li><li>Inclusão digital</li></ul></div></section>
+    <!-- Convite ao voluntariado -->
+    <section class="volunteer" id="voluntariado"><div class="container section-heading"><p class="eyebrow">Seja Voluntário</p><h2>Junte-se a nós e faça parte da transformação social.</h2><p>Seu tempo, sua experiência e sua vontade de colaborar podem ampliar o alcance das nossas ações.</p><a class="button button-primary" href="#contato">Quero ser voluntário</a></div></section>
+    <!-- Contato com dados placeholder -->
+    <section id="contato"><div class="container contact-grid"><div><p class="eyebrow">Contato</p><h2>Vamos conversar?</h2><div class="contact-details"><div class="contact-item"><span class="contact-icon">⌖</span><div><b>Endereço</b><span>Rua Dom Jose de Alarcão, 55 - Ipiranga, São Paulo - CEP 04208-040</span></div></div><div class="contact-item"><span class="contact-icon">@</span><div><b>E-mail</b><span>email@exemplo.org.br</span></div></div><div class="contact-item"><span class="contact-icon">☎</span><div><b>Telefone</b><span>(11) 0000-0000</span></div></div></div></div><div class="contact-note"><h3>Faça parte desta rede</h3><p>Parcerias, voluntariado e apoio financeiro fortalecem o impacto de cada projeto.</p><a class="button button-light" href="mailto:email@exemplo.org.br">Entrar em contato</a></div></div></section>
   </main>
-
-  <!-- Rodapé com links rápidos, redes e política -->
-  <footer>
-    <div class="container footer-grid">
-      <div><a href="#inicio"><img class="brand-logo" src="logo instituto katia carvalho.jpeg" alt="Instituto Katia Carvalho - Fomento ao Agro e Sustentabilidade"></a><p>Solidariedade, inclusão e desenvolvimento comunitário.</p></div>
-      <div><h3>Links rápidos</h3><ul><li><a href="#instituto">O Instituto</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#transparencia">Transparência</a></li><li><a href="#contato">Contato</a></li></ul></div>
-      <div><h3>Redes sociais</h3><div class="socials"><a href="#contato" aria-label="Instagram">ig</a><a href="#contato" aria-label="Facebook">fb</a><a href="#contato" aria-label="LinkedIn">in</a></div></div>
-    </div>
-    <div class="container copyright"><span>© Instituto Katia Carvalho - Todos os direitos reservados</span><a href="#contato">Política de privacidade</a></div>
-  </footer>
-
+  <!-- Footer institucional com links placeholder -->
+  <footer><div class="container footer-grid"><div><a href="#inicio"><img class="brand-logo" src="logo instituto katia carvalho.jpeg" alt="Logo do Instituto Katia Carvalho"></a><p>Solidariedade, inclusão e desenvolvimento comunitário.</p></div><div><h3>Links rápidos</h3><ul><li><a href="#instituto">O Instituto</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#transparencia">Transparência</a></li><li><a href="#contato">Contato</a></li></ul></div><div><h3>Redes sociais</h3><div class="socials"><a href="#contato" aria-label="Instagram">ig</a><a href="#contato" aria-label="Facebook">fb</a><a href="#contato" aria-label="LinkedIn">in</a></div></div></div><div class="container copyright"><span>© Instituto Katia Carvalho - Todos os direitos reservados</span><a href="#contato">Política de privacidade</a></div></footer>
   <!-- Interação do menu em telas pequenas -->
-  <script>
-    const menuButton = document.querySelector('.menu-toggle');
-    const navigation = document.querySelector('nav');
-    menuButton.addEventListener('click', () => {
-      const isOpen = navigation.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', isOpen);
-      menuButton.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-    });
-    navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-      navigation.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.setAttribute('aria-label', 'Abrir menu');
-    }));
-  </script>
+  <script>const menuButton=document.querySelector('.menu-toggle');const navigation=document.querySelector('nav');menuButton.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',isOpen);menuButton.setAttribute('aria-label',isOpen?'Fechar menu':'Abrir menu');});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));</script>
 </body>
 </html>
