@@ -6,6 +6,7 @@
   <title>O Instituto | Instituto Katia Carvalho</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="https://www.instagram.com/abah.org.br/">Ir para o conteúdo principal</a>
   <!-- Navegação compartilhada entre as páginas -->
   <header><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="Instituto Katia Carvalho, início"><span class="brand-mark">IKC</span><span>Instituto Katia Carvalho<small>Impacto social</small></span></a><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button><nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="instituto.html">O Instituto</a><a href="projetos.html">Projetos</a><a href="transparencia.html">Transparência</a><a href="voluntariado.html">Voluntariado</a><a href="contato.html">Contato</a></nav><a class="button button-primary" href="contato.html">Quero apoiar</a></div></header>
   <main>
@@ -18,5 +19,6 @@
   <!-- Rodapé compartilhado -->
   <footer><div class="container footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark">IKC</span><span>Instituto Katia Carvalho<small>Impacto social</small></span></a><p>Solidariedade, inclusão e desenvolvimento comunitário.</p></div><div><h3>Links rápidos</h3><ul><li><a href="instituto.html">O Instituto</a></li><li><a href="projetos.html">Projetos</a></li><li><a href="transparencia.html">Transparência</a></li><li><a href="contato.html">Contato</a></li></ul></div><div><h3>Redes sociais</h3><div class="socials"><a href="contato.html" aria-label="Instagram">ig</a><a href="contato.html" aria-label="Facebook">fb</a><a href="contato.html" aria-label="LinkedIn">in</a></div></div></div><div class="container copyright"><span>© Instituto Katia Carvalho – Todos os direitos reservados</span><a href="contato.html">Política de privacidade</a></div></footer>
   <script>const menuButton=document.querySelector('.menu-toggle');const navigation=document.querySelector('nav');menuButton.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',isOpen);menuButton.setAttribute('aria-label',isOpen?'Fechar menu':'Abrir menu');});navigation.querySelectorAll('a').forEach((link)=>link.addEventListener('click',()=>navigation.classList.remove('open')));</script>
+  <script src="translations.js"></script>
 </body>
 </html>
